@@ -1,14 +1,12 @@
----
-id: FR-ISS-001
-title: Issue List
-domain: issues
-type: functional
-status: active
-depends_on: [FR-AUTH-001, FR-USR-005]
-inherits_conventions: [STD-ACC-001, STD-LST-001, STD-MSG-001, STD-OP-001]
-inherits_quality:
-  [NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001]
----
+# Issue List
+
+> id: FR-ISS-001
+> domain: issues
+> type: functional
+> status: active
+> depends_on: FR-AUTH-001, FR-USR-005
+> inherits_conventions: STD-ACC-001, STD-LST-001, STD-MSG-001, STD-OP-001
+> inherits_quality: NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001
 
 ## Goal
 

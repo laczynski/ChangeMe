@@ -1,15 +1,12 @@
----
-id: FR-ROL-003
-title: Create and Edit Role
-domain: access
-type: functional
-status: active
-depends_on: [FR-ROL-001, FR-ROL-005]
-inherits_conventions:
-  [STD-ACC-001, STD-FRM-001, STD-MSG-001, STD-OP-001, STD-VAL-001]
-inherits_quality:
-  [NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001]
----
+# Create and Edit Role
+
+> id: FR-ROL-003
+> domain: access
+> type: functional
+> status: active
+> depends_on: FR-ROL-001, FR-ROL-005
+> inherits_conventions: STD-ACC-001, STD-FRM-001, STD-MSG-001, STD-OP-001, STD-VAL-001
+> inherits_quality: NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001
 
 ## Goal
 

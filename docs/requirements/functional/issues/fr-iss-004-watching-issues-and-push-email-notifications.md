@@ -1,14 +1,12 @@
----
-id: FR-ISS-004
-title: Watching Issues and Push / Email Notifications
-domain: issues
-type: functional
-status: active
-depends_on: [FR-ISS-002, FR-ISS-006]
-inherits_conventions: [STD-ACC-001, STD-MSG-001]
-inherits_quality:
-  [NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001]
----
+# Watching Issues and Push / Email Notifications
+
+> id: FR-ISS-004
+> domain: issues
+> type: functional
+> status: active
+> depends_on: FR-ISS-002, FR-ISS-006
+> inherits_conventions: STD-ACC-001, STD-MSG-001
+> inherits_quality: NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001
 
 ## Goal
 

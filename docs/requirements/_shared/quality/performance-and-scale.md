@@ -1,9 +1,7 @@
----
-id: NFR-PERF-001
-title: Performance and Scale
-type: quality
-status: active
----
+> id: NFR-PERF-001
+> title: Performance and Scale
+> type: quality
+> status: active
 
 ## Performance and scale
 

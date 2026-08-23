@@ -1,10 +1,7 @@
----
-id: CONV-001
-title: Product Standards
-type: conventions
-status: active
-depends_on: []
----
+> id: CONV-001
+> title: Product Standards
+> type: conventions
+> status: active
 
 # Product standards
 

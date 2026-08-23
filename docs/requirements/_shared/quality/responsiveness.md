@@ -1,9 +1,7 @@
----
-id: NFR-RSP-001
-title: Responsiveness and Layout
-type: quality
-status: active
----
+> id: NFR-RSP-001
+> title: Responsiveness and Layout
+> type: quality
+> status: active
 
 ## Responsiveness and layout
 

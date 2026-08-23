@@ -1,6 +1,6 @@
 # L2 — Conventions
 
-> Default product behavior. Functional specifications inherit via `inherits_conventions: [STD-…]` in frontmatter.
+> Default product behavior. Functional specifications inherit via `inherits_conventions: STD-…` in the metadata header.
 
 | Document                                     | Role                                                            |
 | -------------------------------------------- | --------------------------------------------------------------- |

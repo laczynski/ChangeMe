@@ -1,14 +1,11 @@
----
-id: FR-AUTH-001
-title: Login with Sessions
-domain: identity
-type: functional
-status: active
-depends_on: []
-inherits_conventions: [STD-ACC-001, STD-MSG-001, STD-VAL-001]
-inherits_quality:
-  [NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001]
----
+# Login with Sessions
+
+> id: FR-AUTH-001
+> domain: identity
+> type: functional
+> status: active
+> inherits_conventions: STD-ACC-001, STD-MSG-001, STD-VAL-001
+> inherits_quality: NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001
 
 > Account terms: `docs/requirements/_shared/domain/glossary.md`.
 

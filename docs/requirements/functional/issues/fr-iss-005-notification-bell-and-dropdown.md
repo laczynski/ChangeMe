@@ -1,14 +1,12 @@
----
-id: FR-ISS-005
-title: Notification Bell and Dropdown
-domain: issues
-type: functional
-status: active
-depends_on: [FR-ISS-004]
-inherits_conventions: [STD-ACC-001, STD-LST-002, STD-MSG-001]
-inherits_quality:
-  [NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001]
----
+# Notification Bell and Dropdown
+
+> id: FR-ISS-005
+> domain: issues
+> type: functional
+> status: active
+> depends_on: FR-ISS-004
+> inherits_conventions: STD-ACC-001, STD-LST-002, STD-MSG-001
+> inherits_quality: NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001
 
 ## Goal
 

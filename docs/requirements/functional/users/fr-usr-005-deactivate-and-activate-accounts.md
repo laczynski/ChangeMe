@@ -1,14 +1,12 @@
----
-id: FR-USR-005
-title: Deactivate and Activate Accounts
-domain: users
-type: functional
-status: active
-depends_on: [FR-ISS-002, FR-ROL-006]
-inherits_conventions: [STD-ACC-001, STD-MSG-001, STD-OP-001]
-inherits_quality:
-  [NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001]
----
+# Deactivate and Activate Accounts
+
+> id: FR-USR-005
+> domain: users
+> type: functional
+> status: active
+> depends_on: FR-ISS-002, FR-ROL-006
+> inherits_conventions: STD-ACC-001, STD-MSG-001, STD-OP-001
+> inherits_quality: NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001
 
 ## Goal
 

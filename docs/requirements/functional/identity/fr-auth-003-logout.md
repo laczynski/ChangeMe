@@ -1,14 +1,12 @@
----
-id: FR-AUTH-003
-title: Logout
-domain: identity
-type: functional
-status: active
-depends_on: [FR-USR-001]
-inherits_conventions: [STD-ACC-001, STD-MSG-001, STD-OP-001]
-inherits_quality:
-  [NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001]
----
+# Logout
+
+> id: FR-AUTH-003
+> domain: identity
+> type: functional
+> status: active
+> depends_on: FR-USR-001
+> inherits_conventions: STD-ACC-001, STD-MSG-001, STD-OP-001
+> inherits_quality: NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001
 
 ## Goal
 
