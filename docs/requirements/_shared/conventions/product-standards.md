@@ -176,10 +176,8 @@ Unless a functional specification specifies otherwise:
 
 ## How to reference in a functional specification
 
-Frontmatter:
-
-```yaml
-inherits_conventions: [STD-LST-001, STD-VAL-001]
+```markdown
+> inherits_conventions: STD-LST-001, STD-VAL-001
 ```
 
 In **Functional requirements**:
