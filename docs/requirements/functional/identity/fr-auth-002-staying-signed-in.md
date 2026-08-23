@@ -1,13 +1,12 @@
----
-id: FR-AUTH-002
-title: Staying Signed In
-domain: identity
-type: functional
-status: active
-depends_on: [FR-ISS-004, FR-ROL-001, FR-USR-005]
-inherits_conventions: [STD-ACC-001, STD-MSG-001, STD-VAL-001]
-inherits_quality: [NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001]
----
+# Staying Signed In
+
+> id: FR-AUTH-002
+> domain: identity
+> type: functional
+> status: active
+> depends_on: FR-ISS-004, FR-ROL-001, FR-USR-005
+> inherits_conventions: STD-ACC-001, STD-MSG-001, STD-VAL-001
+> inherits_quality: NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001
 
 ## Goal
 

@@ -15,6 +15,7 @@ import {
   collectQualityDocs,
   collectStdIdsFromConventions,
   parseFrontmatter,
+  stripMetadata,
 } from "./requirements-lib.mjs";
 
 const errors = [];
@@ -31,18 +32,18 @@ function warn(msg) {
 function validateSharedDoc(doc, idPattern) {
   const rel = doc.relPath;
   if (!doc.id) {
-    error(`Missing id in frontmatter: ${rel}`);
+    error(`Missing id in metadata: ${rel}`);
     return false;
   }
   if (!idPattern.test(doc.id)) {
-    error(`Invalid id "${doc.id}" in frontmatter: ${rel}`);
+    error(`Invalid id "${doc.id}" in metadata: ${rel}`);
     return false;
   }
   if (doc.type && doc.expectedType && doc.type !== doc.expectedType) {
     warn(`Expected type: ${doc.expectedType} in ${rel}`);
   }
   if (!doc.title) {
-    warn(`Missing title in frontmatter: ${rel}`);
+    warn(`Missing title in metadata: ${rel}`);
   }
   return true;
 }
@@ -122,36 +123,23 @@ function main() {
     const content = fs.readFileSync(filePath, "utf8");
     const meta = parseFrontmatter(content);
     if (!meta) {
-      error(`Missing YAML frontmatter: functional/${domain}/${name}`);
+      error(`Missing metadata header: functional/${domain}/${name}`);
       continue;
     }
 
     if (!meta.id || !/^FR-[A-Z0-9]+-\d{3}$/.test(meta.id)) {
-      error(
-        `Invalid or missing id in frontmatter: functional/${domain}/${name}`,
-      );
+      error(`Invalid or missing id in metadata: functional/${domain}/${name}`);
     }
     if (meta.type !== "functional") {
       warn(`Expected type: functional in functional/${domain}/${name}`);
     }
     if (meta.domain !== domain) {
       error(
-        `Frontmatter domain "${meta.domain}" does not match folder "${domain}": ${name}`,
+        `Metadata domain "${meta.domain}" does not match folder "${domain}": ${name}`,
       );
     }
     if (!meta.title) {
-      error(`Missing title in frontmatter: functional/${domain}/${name}`);
-    }
-
-    if (meta.inherits_fr) {
-      warn(
-        `Deprecated inherits_fr in functional/${domain}/${name}; use inherits_conventions with STD-* ids`,
-      );
-    }
-    if (meta.inherits_nfr) {
-      warn(
-        `Deprecated inherits_nfr in functional/${domain}/${name}; use inherits_quality`,
-      );
+      error(`Missing title in metadata: functional/${domain}/${name}`);
     }
 
     if (frIds.has(meta.id)) {
@@ -170,21 +158,18 @@ function main() {
       );
     }
 
-    const body = content.replace(/^---[\s\S]*?---\n/, "");
+    const body = stripMetadata(content);
     if (!body.includes("## Functional requirements")) {
       error(`Missing ## Functional requirements: functional/${domain}/${name}`);
     }
-    if (
-      !body.includes("## Quality requirements") &&
-      !body.includes("## Non-functional requirements")
-    ) {
+    if (!body.includes("## Quality requirements")) {
       error(`Missing ## Quality requirements: functional/${domain}/${name}`);
     }
   }
 
   for (const { domain, name, path: filePath } of frFiles) {
     const content = fs.readFileSync(filePath, "utf8");
-    const body = content.replace(/^---[\s\S]*?---\n/, "");
+    const body = stripMetadata(content);
     const frRefRe = /(?<![A-Z/])FR-[A-Z0-9]+-\d{3}/g;
     const refs = [...new Set(body.match(frRefRe) ?? [])];
     const meta = parseFrontmatter(content);
@@ -200,7 +185,7 @@ function main() {
         }
       }
     }
-    const qualityInherits = meta?.inherits_quality ?? meta?.inherits_nfr ?? [];
+    const qualityInherits = meta?.inherits_quality ?? [];
     for (const dep of qualityInherits) {
       if (!qualityIds.has(dep)) {
         error(
@@ -264,7 +249,7 @@ function main() {
           status: meta?.status ?? "active",
           file,
           depends_on: meta?.depends_on ?? [],
-          inherits_quality: meta?.inherits_quality ?? meta?.inherits_nfr ?? [],
+          inherits_quality: meta?.inherits_quality ?? [],
           inherits_conventions: meta?.inherits_conventions ?? [],
         };
       }),

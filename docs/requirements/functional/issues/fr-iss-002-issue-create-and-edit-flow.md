@@ -1,14 +1,12 @@
----
-id: FR-ISS-002
-title: Issue Create and Edit Flow
-domain: issues
-type: functional
-status: active
-depends_on: [FR-USR-005, FR-ISS-004]
-inherits_conventions: [STD-ACC-001, STD-FRM-001, STD-MSG-001, STD-VAL-001]
-inherits_quality:
-  [NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001]
----
+# Issue Create and Edit Flow
+
+> id: FR-ISS-002
+> domain: issues
+> type: functional
+> status: active
+> depends_on: FR-USR-005, FR-ISS-004
+> inherits_conventions: STD-ACC-001, STD-FRM-001, STD-MSG-001, STD-VAL-001
+> inherits_quality: NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001
 
 ## Goal
 

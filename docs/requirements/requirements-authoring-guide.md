@@ -7,10 +7,10 @@
 
 ## New vs updated specification
 
-| Situation          | What to do                                                                                                                                                                                                            |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **New `FR-*`**     | Copy `_functional-specification-skeleton.md` to `docs/requirements/functional/<domain>/fr-<area>-<nnn>-<slug>.md`. Assign the next free `FR-<AREA>-NNN` in that domain. Fill frontmatter and sections per this guide. |
-| **Updated `FR-*`** | Edit the existing file only. Describe what changed in the pending change record (**Behavior delta**), not only in the specification body.                                                                             |
+| Situation          | What to do                                                                                                                                                                                                                    |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **New `FR-*`**     | Copy `_functional-specification-skeleton.md` to `docs/requirements/functional/<domain>/fr-<area>-<nnn>-<slug>.md`. Assign the next free `FR-<AREA>-NNN` in that domain. Fill the metadata header and sections per this guide. |
+| **Updated `FR-*`** | Edit the existing file only. Describe what changed in the pending change record (**Behavior delta**), not only in the specification body.                                                                                     |
 
 After either path, add or update a pending record in `docs/requirements/changes/` and run `npm run docs:validate`.
 
@@ -40,13 +40,12 @@ After either path, add or update a pending record in `docs/requirements/changes/
 - **Quality requirements** — inherits L3 documents via `inherits_quality`; override only when this specification differs.
 - **Out of scope** — deliberate exclusions.
 
-Frontmatter:
+Metadata header:
 
-```yaml
-depends_on: [FR-YYY-MMM]
-inherits_conventions: [STD-LST-001, STD-VAL-001]
-inherits_quality:
-  [NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001]
+```markdown
+> depends_on: FR-YYY-MMM
+> inherits_conventions: STD-LST-001, STD-VAL-001
+> inherits_quality: NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001
 ```
 
 ## What to include in L4
@@ -78,13 +77,13 @@ Do not include source code, API endpoints, HTTP details, database tables, or mig
 
 ## Layer reference
 
-| Layer             | Location               | Question                             |
-| ----------------- | ---------------------- | ------------------------------------ |
-| L1 Domain         | `_shared/domain/`      | What exists?                         |
-| L2 Conventions    | `_shared/conventions/` | How does the product usually behave? |
-| L3 Quality        | `_shared/quality/`     | How good must it be?                 |
-| L4 Capabilities   | `functional/<domain>/fr-*.md` | What must this feature do?    |
-| L5 Implementation | `docs/modules/*/development.md`, `docs/system/development/` | How do we build it in this repo? |
+| Layer             | Location                                                    | Question                             |
+| ----------------- | ----------------------------------------------------------- | ------------------------------------ |
+| L1 Domain         | `_shared/domain/`                                           | What exists?                         |
+| L2 Conventions    | `_shared/conventions/`                                      | How does the product usually behave? |
+| L3 Quality        | `_shared/quality/`                                          | How good must it be?                 |
+| L4 Capabilities   | `functional/<domain>/fr-*.md`                               | What must this feature do?           |
+| L5 Implementation | `docs/modules/*/development.md`, `docs/system/development/` | How do we build it in this repo?     |
 
 **Override rule:** L4 overrides L2; L2 overrides implicit habit; L3 applies unless L4 scopes it out; L5 never defines product behavior.
 

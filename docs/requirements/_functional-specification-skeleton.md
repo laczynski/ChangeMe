@@ -6,17 +6,15 @@
 > **Workflow:** `docs/requirements/requirements-change-process.md`.
 
 ```markdown
----
-id: FR-XXX-NNN
-title: Specification Name
-domain: identity | users | invitations | access | passkeys | issues
-type: functional
-status: active
-depends_on: [FR-YYY-MMM]
-inherits_conventions: [STD-MSG-001, STD-VAL-001, STD-ACC-001]
-inherits_quality:
-  [NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001]
----
+# Specification Name
+
+> id: FR-XXX-NNN
+> domain: identity | users | invitations | access | passkeys | issues
+> type: functional
+> status: active
+> depends_on: FR-YYY-MMM
+> inherits_conventions: STD-MSG-001, STD-VAL-001, STD-ACC-001
+> inherits_quality: NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001
 
 ## Goal
 

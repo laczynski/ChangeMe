@@ -1,14 +1,12 @@
----
-id: FR-ROL-001
-title: Permission Catalog and Effective Permissions
-domain: access
-type: functional
-status: active
-depends_on: [FR-AUTH-001, FR-AUTH-002, FR-ROL-005, FR-USR-005]
-inherits_conventions: [STD-ACC-001, STD-MSG-001]
-inherits_quality:
-  [NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001]
----
+# Permission Catalog and Effective Permissions
+
+> id: FR-ROL-001
+> domain: access
+> type: functional
+> status: active
+> depends_on: FR-AUTH-001, FR-AUTH-002, FR-ROL-005, FR-USR-005
+> inherits_conventions: STD-ACC-001, STD-MSG-001
+> inherits_quality: NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001
 
 ## Goal
 

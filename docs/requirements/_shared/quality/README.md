@@ -10,4 +10,4 @@
 | NFR-RSP-001  | [responsiveness.md](responsiveness.md)               |
 | NFR-PERF-001 | [performance-and-scale.md](performance-and-scale.md) |
 
-Functional specifications inherit via `inherits_quality` in frontmatter.
+Functional specifications inherit via `inherits_quality` in the metadata header.

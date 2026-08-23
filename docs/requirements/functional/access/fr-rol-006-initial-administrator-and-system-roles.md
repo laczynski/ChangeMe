@@ -1,14 +1,12 @@
----
-id: FR-ROL-006
-title: Initial Administrator and System Roles
-domain: access
-type: functional
-status: active
-depends_on: [FR-AUTH-001, FR-ROL-001, FR-ROL-003, FR-ROL-004, FR-ROL-005]
-inherits_conventions: [STD-ACC-001, STD-MSG-001]
-inherits_quality:
-  [NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001]
----
+# Initial Administrator and System Roles
+
+> id: FR-ROL-006
+> domain: access
+> type: functional
+> status: active
+> depends_on: FR-AUTH-001, FR-ROL-001, FR-ROL-003, FR-ROL-004, FR-ROL-005
+> inherits_conventions: STD-ACC-001, STD-MSG-001
+> inherits_quality: NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001
 
 ## Goal
 

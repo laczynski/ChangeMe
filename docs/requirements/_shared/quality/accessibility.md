@@ -1,9 +1,7 @@
----
-id: NFR-A11Y-001
-title: Accessibility
-type: quality
-status: active
----
+> id: NFR-A11Y-001
+> title: Accessibility
+> type: quality
+> status: active
 
 ## Accessibility
 

@@ -1,15 +1,12 @@
----
-id: FR-ISS-003
-title: Issue Details, Comments, and Change History
-domain: issues
-type: functional
-status: active
-depends_on: [FR-ISS-002, FR-ISS-004, FR-ISS-006]
-inherits_conventions:
-  [STD-ACC-001, STD-LST-002, STD-MSG-001, STD-OP-001, STD-VAL-001]
-inherits_quality:
-  [NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001]
----
+# Issue Details, Comments, and Change History
+
+> id: FR-ISS-003
+> domain: issues
+> type: functional
+> status: active
+> depends_on: FR-ISS-002, FR-ISS-004, FR-ISS-006
+> inherits_conventions: STD-ACC-001, STD-LST-002, STD-MSG-001, STD-OP-001, STD-VAL-001
+> inherits_quality: NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001
 
 ## Goal
 

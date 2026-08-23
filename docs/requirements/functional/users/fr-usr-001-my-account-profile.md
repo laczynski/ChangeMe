@@ -1,14 +1,12 @@
----
-id: FR-USR-001
-title: My Account Profile
-domain: users
-type: functional
-status: active
-depends_on: [FR-AUTH-001, FR-AUTH-003, FR-AUTH-004, FR-ROL-001]
-inherits_conventions: [STD-ACC-001, STD-FRM-001, STD-MSG-001, STD-VAL-001]
-inherits_quality:
-  [NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001]
----
+# My Account Profile
+
+> id: FR-USR-001
+> domain: users
+> type: functional
+> status: active
+> depends_on: FR-AUTH-001, FR-AUTH-003, FR-AUTH-004, FR-ROL-001
+> inherits_conventions: STD-ACC-001, STD-FRM-001, STD-MSG-001, STD-VAL-001
+> inherits_quality: NFR-QUAL-001, NFR-A11Y-001, NFR-I18N-001, NFR-PERF-001, NFR-RSP-001
 
 ## Goal
 

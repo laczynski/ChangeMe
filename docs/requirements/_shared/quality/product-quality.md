@@ -1,9 +1,7 @@
----
-id: NFR-QUAL-001
-title: Product Quality (Index)
-type: quality
-status: active
----
+> id: NFR-QUAL-001
+> title: Product Quality (Index)
+> type: quality
+> status: active
 
 # Product quality
 

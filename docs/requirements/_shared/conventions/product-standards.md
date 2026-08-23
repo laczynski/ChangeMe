@@ -1,10 +1,7 @@
----
-id: CONV-001
-title: Product Standards
-type: conventions
-status: active
-depends_on: []
----
+> id: CONV-001
+> title: Product Standards
+> type: conventions
+> status: active
 
 # Product standards
 
@@ -179,10 +176,8 @@ Unless a functional specification specifies otherwise:
 
 ## How to reference in a functional specification
 
-Frontmatter:
-
-```yaml
-inherits_conventions: [STD-LST-001, STD-VAL-001]
+```markdown
+> inherits_conventions: STD-LST-001, STD-VAL-001
 ```
 
 In **Functional requirements**:

@@ -1,4 +1,4 @@
-/** Provides shared frontmatter parsing and document discovery for requirements tooling. */
+/** Provides shared metadata parsing and document discovery for requirements tooling. */
 
 import fs from "node:fs";
 import path from "node:path";
@@ -6,36 +6,86 @@ import path from "node:path";
 export const ROOT = path.join(process.cwd(), "docs", "requirements");
 export const FUNCTIONAL_DIR = path.join(ROOT, "functional");
 
-export function parseFrontmatter(content) {
-  if (!content.startsWith("---\n")) return null;
-  const end = content.indexOf("\n---\n", 4);
-  if (end === -1) return null;
-  const block = content.slice(4, end);
+const LIST_KEYS = new Set([
+  "depends_on",
+  "inherits_conventions",
+  "inherits_quality",
+]);
+
+function normalizeNewlines(content) {
+  return content.replace(/^\uFEFF/, "").replaceAll("\r\n", "\n");
+}
+
+function splitLeadingH1(text) {
+  if (!text.startsWith("# ")) return { heading: null, rest: text };
+  const nl = text.indexOf("\n");
+  const heading = (nl === -1 ? text.slice(2) : text.slice(2, nl)).trim();
+  const rest = (nl === -1 ? "" : text.slice(nl + 1)).replace(/^\n+/, "");
+  return { heading, rest };
+}
+
+function parseMetaValue(key, raw) {
+  const value = raw.replaceAll("`", "").trim();
+  if (LIST_KEYS.has(key)) {
+    if (!value) return [];
+    return value
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+  return value;
+}
+
+function parseMetaLines(block) {
   const meta = {};
-  const lines = block.split("\n");
-
-  for (let index = 0; index < lines.length; index += 1) {
-    const m = lines[index].match(/^([\w_]+):\s*(.*)$/);
-    if (!m) continue;
-    const [, key] = m;
-    let raw = m[2].trim();
-
-    if (!raw && /^\s+\S/.test(lines[index + 1] ?? "")) {
-      raw = lines[index + 1].trim();
-      index += 1;
-    }
-
-    if (raw.startsWith("[") && raw.endsWith("]")) {
-      meta[key] = raw
-        .slice(1, -1)
-        .split(",")
-        .map((s) => s.trim())
-        .filter(Boolean);
-    } else {
-      meta[key] = raw;
-    }
+  for (const line of block.split("\n")) {
+    const match = line.match(/^([\w_]+):\s*(.*)$/);
+    if (!match) continue;
+    meta[match[1]] = parseMetaValue(match[1], match[2].trim());
   }
   return meta;
+}
+
+function parseQuoteBlock(text) {
+  if (!text.startsWith(">")) return null;
+  const lines = text.split("\n");
+  const quoteLines = [];
+  let index = 0;
+  for (; index < lines.length; index += 1) {
+    const line = lines[index];
+    if (line === ">" || line.startsWith("> ") || line.startsWith(">\t")) {
+      quoteLines.push(line === ">" ? "" : line.replace(/^>\s?/, ""));
+      continue;
+    }
+    break;
+  }
+  if (!quoteLines.some((line) => /^[\w_]+:\s*/.test(line))) return null;
+  while (index < lines.length && lines[index] === "") index += 1;
+  return {
+    meta: parseMetaLines(quoteLines.join("\n")),
+    body: lines.slice(index).join("\n"),
+  };
+}
+
+function extractMetadata(content) {
+  const text = normalizeNewlines(content);
+  const { heading, rest } = splitLeadingH1(text);
+  const parsed = parseQuoteBlock(rest);
+  if (!parsed) return null;
+  const meta = { ...parsed.meta };
+  if (!meta.title && heading) meta.title = heading;
+  return { heading, meta, body: parsed.body };
+}
+
+export function parseFrontmatter(content) {
+  return extractMetadata(content)?.meta ?? null;
+}
+
+export function stripMetadata(content) {
+  const parsed = extractMetadata(content);
+  if (!parsed) return content;
+  if (parsed.heading) return `# ${parsed.heading}\n\n${parsed.body}`;
+  return parsed.body;
 }
 
 export function listMarkdownFiles(dir) {
@@ -75,11 +125,6 @@ export function collectDomainDocs() {
   }));
 }
 
-/** @deprecated use collectDomainDocs */
-export function collectReferenceDocs() {
-  return collectDomainDocs();
-}
-
 function collectSharedDocs(subdir, expectedType) {
   const dir = path.join(ROOT, "_shared", subdir);
   return listMarkdownFiles(dir)
@@ -104,11 +149,6 @@ function collectSharedDocs(subdir, expectedType) {
 
 export function collectQualityDocs() {
   return collectSharedDocs("quality", "quality");
-}
-
-/** @deprecated use collectQualityDocs */
-export function collectNfrDocs() {
-  return collectQualityDocs();
 }
 
 export function collectConventionDocs() {

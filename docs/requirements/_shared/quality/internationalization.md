@@ -1,9 +1,7 @@
----
-id: NFR-I18N-001
-title: Internationalization and Copy
-type: quality
-status: active
----
+> id: NFR-I18N-001
+> title: Internationalization and Copy
+> type: quality
+> status: active
 
 ## Internationalization and copy
 
