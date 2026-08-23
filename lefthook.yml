@@ -6,12 +6,16 @@ pre-commit:
     eslint:
       root: src/ChangeMe.Frontend/
       glob: '**/*.{ts,html}'
-      run: npx eslint --fix {staged_files}
+      skip:
+        - run: node ../../scripts/lefthook-skip-unless-frontend-deps.mjs
+      run: npm exec --no -- eslint --fix {staged_files}
       stage_fixed: true
     prettier-frontend:
       root: src/ChangeMe.Frontend/
       glob: '**/*.{ts,html,css,json}'
-      run: npx prettier --write {staged_files}
+      skip:
+        - run: node ../../scripts/lefthook-skip-unless-frontend-deps.mjs
+      run: npm exec --no -- prettier --write {staged_files}
       stage_fixed: true
     dotnet-format:
       glob: 'src/ChangeMe.Backend/**/*.cs'

@@ -6,6 +6,7 @@
     "setup:deployment": "node scripts/run-deployment-command.mjs setup",
     "validate:deployment": "node scripts/run-deployment-command.mjs validate",
     "prepare": "node scripts/prepare.mjs",
+    "postinstall": "npm --prefix src/ChangeMe.Frontend install",
     "install:frontend": "npm --prefix src/ChangeMe.Frontend install && npm --prefix src/ChangeMe.Frontend exec playwright install chromium",
     "start:frontend": "npm --prefix src/ChangeMe.Frontend run start",
     "start:backend": "dotnet run --project src/ChangeMe.Backend/src/ChangeMe.Backend.Web/ChangeMe.Backend.Web.csproj",
