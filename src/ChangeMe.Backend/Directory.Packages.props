@@ -23,8 +23,8 @@
     <PackageVersion Include="Ardalis.Result" Version="10.1.0" />
     <PackageVersion Include="FastEndpoints" Version="8.3.0" />
     <PackageVersion Include="FastEndpoints.Swagger" Version="8.3.0" />
-    <PackageVersion Include="Hangfire.AspNetCore" Version="1.8.24" />
-    <PackageVersion Include="Hangfire.Core" Version="1.8.24" />
+    <PackageVersion Include="Hangfire.AspNetCore" Version="1.8.25" />
+    <PackageVersion Include="Hangfire.Core" Version="1.8.25" />
     <PackageVersion Include="MailKit" Version="4.17.0" />
     <PackageVersion Include="Mime-Detective" Version="25.8.1" />
     <PackageVersion Include="Mediator.Abstractions" Version="3.0.2" />
